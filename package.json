@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "@contentful/app-sdk": "^3.42.0",
+    "@contentful/f36-components": "^4.0.1-next-v4-3329.1842",
     "@contentful/field-editor-single-line": "^0.14.6",
     "@contentful/field-editor-test-utils": "^0.16.0",
     "@contentful/forma-36-fcss": "^0.3.4",
     "@contentful/forma-36-react-components": "^3.100.0",
     "@contentful/forma-36-tokens": "^0.10.2",
+    "@emotion/css": "^11.5.0",
+    "@emotion/react": "^11.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -19,8 +22,7 @@
     "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.4.4"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "cross-env BROWSER=none react-scripts start",
@@ -46,7 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@contentful/app-scripts": "^0.8.49"
+    "@contentful/app-scripts": "^0.8.49",
+    "typescript": "^4.4.4"
   },
   "homepage": "."
 }
