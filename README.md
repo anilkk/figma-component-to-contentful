@@ -18,7 +18,9 @@ You can find your Figma team id on the URL by selecting your team on Figma as sh
 
 
 ## See it in action
+[![App demo Youtube video thumbnail](./docs/demo-youtube-video.png)](https://youtu.be/z0j20_XPgSk "Figma components to Contentful app demo")
 ![Figma components to Contentful demo](./docs/figma-components-contentful.gif)
+
 
 ## Feedback
 If you have any feedback to share reach out to [Anil Kumar](https://twitter.com/anilbms75) or open a GitHub issue. 
