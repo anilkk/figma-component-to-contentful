@@ -30,14 +30,16 @@ const Field = (props: FieldProps) => {
       title: 'Choose Figma component',
       shouldCloseOnOverlayClick: true,
       shouldCloseOnEscapePress: true,
-      parameters: { },
+      parameters: {
+        figmaComponentKey: value
+       },
       width: 600,
       minHeight: 400,
       allowHeightOverflow: true
     })
     .then(async (result) => {
       console.log('RESULT -->', result);
-      if(result.value) {
+      if(result && result.value) {
         await sdk.field.setValue(result.value);
         setValue(result.value);
       }

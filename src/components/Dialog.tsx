@@ -21,7 +21,10 @@ const Dialog = (props: DialogProps) => {
     componentsLibraryKey
   } = props.sdk.parameters.installation as AppInstallationParameters;
   const [figmaComponents, setFigmaComponents] = React.useState([]);
+  // @ts-ignore
+  const selectedFigmaComponentKey = props.sdk.parameters.invocation.figmaComponentKey
   console.log('PARAMETER --->', apiKey, componentsLibraryKey);
+  
 
   const [selectedCard, setSelectedCard] = React.useState("");
   const handleSelectCard = (event: any) => {
@@ -48,7 +51,7 @@ const Dialog = (props: DialogProps) => {
     (async () => {
       const result = await getFigmaComponents();
       console.log('RESULT --->', result);
-
+      setSelectedCard(selectedFigmaComponentKey);
     })();
   }, [])
 
@@ -77,7 +80,11 @@ const Dialog = (props: DialogProps) => {
   };
 
   return (
-    <div>
+    <div
+    className={css`
+      padding-left: 10px;
+    `}
+    >
       {(figmaComponents.length) ?
         (
           <div
