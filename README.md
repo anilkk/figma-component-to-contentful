@@ -1,4 +1,8 @@
+[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=7qW7288K4eZCXUxx13PNts)
+
 This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
+
+
 
 ## Available Scripts
 

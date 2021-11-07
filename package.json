@@ -1,5 +1,5 @@
 {
-  "name": "figma-to-contentful",
+  "name": "figma-components-to-contentful",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
