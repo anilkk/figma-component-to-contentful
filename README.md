@@ -23,4 +23,5 @@ You can find your Figma team id on the URL by selecting your team on Figma as sh
 ## Feedback
 If you have any feedback to share reach out to [Anil Kumar](https://twitter.com/anilbms75) or open a GitHub issue. 
 
+
 This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
