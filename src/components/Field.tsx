@@ -12,6 +12,13 @@ interface FieldProps {
   sdk: FieldExtensionSDK;
 }
 
+interface FigmaComponent {
+  meta: {
+    name: string;
+    thumbnail_url: string;
+  }
+}
+
 const Field = (props: FieldProps) => {
   const {
     apiKey,
@@ -55,7 +62,7 @@ const Field = (props: FieldProps) => {
     (async () => {
 
       if (value) {
-        const figmaComponent = await fetch(`https://api.figma.com/v1/components/${value}`, {
+        const figmaComponent:FigmaComponent = await fetch(`https://api.figma.com/v1/components/${value}`, {
           // @ts-ignore
           headers: {
             'X-FIGMA-TOKEN': apiKey
@@ -63,6 +70,7 @@ const Field = (props: FieldProps) => {
         })
         .then(res => res.json());
         setComponent({
+          // @ts-ignore
           name: figmaComponent.meta.name,
           thumbnailUrl: figmaComponent.meta.thumbnail_url,
         });

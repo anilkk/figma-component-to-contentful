@@ -86,35 +86,44 @@ const Config = ({ sdk }: ConfigProps) => {
         margin="spacing4Xl"
       >
         <Form>
-        <div>
-          <Heading>Connect Figma</Heading>
-          <Paragraph className={css({ marginBottom: '20px', marginTop: '20px' })}>Enter your API Key for the FIGMA API.</Paragraph>
-          <a href="https://www.figma.com/developers/api#access-tokens" target="_blank" rel="noopener noreferrer"> 
-            Figma access token
-          </a>
-        
-          <TextField
-            id="apiKey"
-            name="apiKey"
-            labelText="FIGMA API Key:"
-            textInputProps={{ width: 'full' }}
-            value={parameters.apiKey}
-            onChange={updateApiKey}
-          />
-          <TextField
-            id="componentsLibraryKey"
-            name="componentsLibraryKey"
-            labelText="Figma team key:"
-            textInputProps={{ width: 'full' }}
-            value={parameters.componentsLibraryKey}
-            onChange={updateComponentsLibraryKey}
-          />
+          <div>
+            <Heading  className={css`
+              margin-bottom:20px;
+            `}
+          >Connect to your Figma</Heading>
+            <TextField
+              id="apiKey"
+              name="apiKey"
+              labelText="FIGMA ACCESS TOKEN:"
+              textInputProps={{ width: 'full' }}
+              value={parameters.apiKey}
+              onChange={updateApiKey}
+            />
+            <Paragraph className={css({ marginBottom: '20px', marginTop: '20px' })}>
+            More details on {" "}
+              <a href="https://www.figma.com/developers/api#access-tokens" target="_blank" rel="noopener noreferrer"> 
+                Figma access token
+              </a>.
+            </Paragraph>
+            <TextField
+              id="componentsLibraryKey"
+              name="componentsLibraryKey"
+              labelText="FIGMA TEAM ID:"
+              textInputProps={{ width: 'full' }}
+              value={parameters.componentsLibraryKey}
+              onChange={updateComponentsLibraryKey}
+              className={css`
+                margin-bottom:20px;
+              `}
+            />
+            <Paragraph>
+            You can find your <strong>Figma team id</strong> on the URL by selecting your team on Figma as shown below.
+            </Paragraph>
+            <img src="../img/figma-team-id.png" alt="Figma team id" className={css`
+            max-width:600px;
+          `} />
           </div>
-          <img className='configGif' src="https://media.giphy.com/media/hmVVRM1uV7vYA/giphy.gif?cid=ecf05e47rxig1yga9p64g7zkey7so6ecwi9sb72skv8ajtwn&rid=giphy.gif&ct=g" alt="Tina Fey giving herself a high five" />
-          <div className='giphyCredit'>
-            <Paragraph className='giphyAttribution'>Figma API KEY</Paragraph>
-          </div>
-      </Form>
+        </Form>
       </Flex>
     </Workbench>
   )

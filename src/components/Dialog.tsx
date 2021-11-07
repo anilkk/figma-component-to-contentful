@@ -102,12 +102,18 @@ const Dialog = (props: DialogProps) => {
             padding: 5px;
           `}
             >
-              {(selectedCard !== "") && <Heading> {
-                figmaComponents.length && figmaComponents.find(({ key }) => (key === selectedCard)).name
-              } component is selected</Heading>}
-              {(selectedCard !== "") &&<Button onClick={handleCloseDialog} disabled={selectedCard === ""}>
-                confirm selection
-              </Button>}
+              {(selectedCard !== "") && figmaComponents.length &&
+              <div>
+                <Heading> 
+                  {/* 
+                  // @ts-ignore */}
+                {figmaComponents.find(({ key }) => (key === selectedCard)).name} component is selected
+                </Heading>
+                <Button onClick={handleCloseDialog} disabled={selectedCard === ""}>
+                  confirm selection
+                </Button>
+              </div>
+              }
             </div>
             <Flex
               flexDirection="column"
