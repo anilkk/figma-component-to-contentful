@@ -21,6 +21,7 @@ const Dialog = (props: DialogProps) => {
     componentsLibraryKey
   } = props.sdk.parameters.installation as AppInstallationParameters;
   const [figmaComponents, setFigmaComponents] = React.useState([]);
+  const [figmaErrorMessage, setFigmaErrorMessage] = React.useState('');
   // @ts-ignore
   const selectedFigmaComponentKey = props.sdk.parameters.invocation.figmaComponentKey
   console.log('PARAMETER --->', apiKey, componentsLibraryKey);
@@ -70,7 +71,12 @@ const Dialog = (props: DialogProps) => {
         console.log('ERROR --->', error);
       });
     // console.log('results ---->', results.meta.components);
-    setFigmaComponents(results.meta.components);
+    if (results && results.error && results.message) {
+      setFigmaErrorMessage(results.message);
+    }
+    if (results && results.meta && results.meta.components) {
+      setFigmaComponents(results.meta.components);
+    }
   };
 
   const handleCloseDialog = () => {
@@ -85,6 +91,9 @@ const Dialog = (props: DialogProps) => {
       padding-left: 10px;
     `}
     >
+      {figmaErrorMessage.length?<Heading className={css`
+            color: #DA294A;
+          `}> FIGMA ERROR - {figmaErrorMessage} !</Heading>: ""}
       {(figmaComponents.length) ?
         (
           <div
@@ -134,7 +143,7 @@ const Dialog = (props: DialogProps) => {
                     // @ts-ignore
                     id={key}
                     onClick={handleSelectCard}
-                    selected={selectedCard === key}
+                    isSelected={selectedCard === key}
                     className={css`
                         max-width: 200px;
                         margin-bottom: 10px;

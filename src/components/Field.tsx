@@ -1,7 +1,9 @@
 import React, { useEffect, useState} from 'react';
-import { Paragraph, Button, TextInput } from '@contentful/forma-36-react-components';
 import {
-  Asset
+  Asset,
+  Button,
+  TextInput,
+  
 } from "@contentful/f36-components";
 import { FieldExtensionSDK } from '@contentful/app-sdk';
 import "@contentful/forma-36-fcss/dist/styles.css";
@@ -83,13 +85,12 @@ const Field = (props: FieldProps) => {
     <div>
       <TextInput
         id="text-input"
-        labelText="text-input-label-text"
         name="text-input"
-        disabled={true}
+        isDisabled={true}
         value={value}
       />
-       <Button buttonType="muted"
-        icon="Tab"
+       <Button
+        variant="secondary"
         onClick={handleOpenDialog}
         className="f36-margin-top--l f36-margin-bottom--l"
        >
