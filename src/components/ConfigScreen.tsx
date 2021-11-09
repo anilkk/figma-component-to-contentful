@@ -1,6 +1,13 @@
 import React, { Component, useState } from 'react';
 import { AppExtensionSDK } from '@contentful/app-sdk';
-import { Heading, Form, Workbench, Paragraph, TextField, Flex, TextLink } from '@contentful/forma-36-react-components';
+import { Workbench } from '@contentful/forma-36-react-components';
+import {
+  Form,
+  Flex,
+  Heading,
+  FormControl,
+  TextInput
+} from "@contentful/f36-components";
 import { css } from 'emotion';
 
 export interface AppInstallationParameters {
@@ -81,7 +88,6 @@ const Config = ({ sdk }: ConfigProps) => {
         alignItems="center"
         flexDirection={"row"}
         flexWrap="wrap"
-        htmlTag="article"
         justifyContent="center"
         margin="spacing4Xl"
       >
@@ -91,34 +97,34 @@ const Config = ({ sdk }: ConfigProps) => {
               margin-bottom:20px;
             `}
           >Connect to your Figma</Heading>
-            <TextField
-              id="apiKey"
+          <FormControl isRequired>
+            <FormControl.Label>FIGMA ACCESS TOKEN:</FormControl.Label>
+            <TextInput id="apiKey"
               name="apiKey"
-              labelText="FIGMA ACCESS TOKEN:"
-              textInputProps={{ width: 'full' }}
               value={parameters.apiKey}
-              onChange={updateApiKey}
-            />
-            <Paragraph className={css({ marginBottom: '20px', marginTop: '20px' })}>
-            More details on {" "}
+              onChange={updateApiKey}/>
+            <FormControl.HelpText>
+              More details on {" "}
               <a href="https://www.figma.com/developers/api#access-tokens" target="_blank" rel="noopener noreferrer"> 
                 Figma access token
               </a>.
-            </Paragraph>
-            <TextField
+            </FormControl.HelpText>
+          </FormControl>
+          <FormControl isRequired>
+            <FormControl.Label>FIGMA TEAM ID:</FormControl.Label>
+            <TextInput
               id="componentsLibraryKey"
               name="componentsLibraryKey"
-              labelText="FIGMA TEAM ID:"
-              textInputProps={{ width: 'full' }}
               value={parameters.componentsLibraryKey}
               onChange={updateComponentsLibraryKey}
               className={css`
                 margin-bottom:20px;
               `}
             />
-            <Paragraph>
+            <FormControl.HelpText>
             You can find your <strong>Figma team id</strong> on the URL by selecting your team on Figma as shown below.
-            </Paragraph>
+            </FormControl.HelpText>
+          </FormControl>
             <img src="../img/figma-team-id.png" alt="Figma team id" className={css`
             max-width:600px;
           `} />

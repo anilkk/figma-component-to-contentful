@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Typography, Paragraph, Asset } from '@contentful/forma-36-react-components';
 import {
   Card,
   Flex,
   Spinner,
-  Heading
+  Heading,
+  Button
 } from "@contentful/f36-components";
 import "@contentful/forma-36-fcss/dist/styles.css";
 import { DialogExtensionSDK } from '@contentful/app-sdk';
@@ -118,7 +118,7 @@ const Dialog = (props: DialogProps) => {
                   // @ts-ignore */}
                 {figmaComponents.find(({ key }) => (key === selectedCard)).name} component is selected
                 </Heading>
-                <Button onClick={handleCloseDialog} disabled={selectedCard === ""}>
+                <Button onClick={handleCloseDialog} isDisabled={selectedCard === ""}>
                   confirm selection
                 </Button>
               </div>

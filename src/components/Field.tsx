@@ -2,8 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {
   Asset,
   Button,
-  TextInput,
-  
+  TextInput
 } from "@contentful/f36-components";
 import { FieldExtensionSDK } from '@contentful/app-sdk';
 import "@contentful/forma-36-fcss/dist/styles.css";
