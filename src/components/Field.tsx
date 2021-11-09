@@ -5,7 +5,7 @@ import {
   TextInput
 } from "@contentful/f36-components";
 import { FieldExtensionSDK } from '@contentful/app-sdk';
-import "@contentful/forma-36-fcss/dist/styles.css";
+// import "@contentful/forma-36-fcss/dist/styles.css";
 import { AppInstallationParameters } from './ConfigScreen';
 import { css } from '@emotion/css'
 

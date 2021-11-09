@@ -6,10 +6,9 @@ import {
   Heading,
   Button
 } from "@contentful/f36-components";
-import "@contentful/forma-36-fcss/dist/styles.css";
 import { DialogExtensionSDK } from '@contentful/app-sdk';
 import { AppInstallationParameters } from './ConfigScreen';
-import { css, cx } from '@emotion/css'
+import { css } from '@emotion/css'
 
 interface DialogProps {
   sdk: DialogExtensionSDK;
@@ -29,20 +28,13 @@ const Dialog = (props: DialogProps) => {
 
   const [selectedCard, setSelectedCard] = React.useState("");
   const handleSelectCard = (event: any) => {
-    const componentId = (event.target.tagName === 'IMG') ? event.target.parentElement.id: event.target.id;
+    const componentId = (event.target.tagName === 'IMG') ? event.target.closest('article').id: event.target.id;
    
     if (selectedCard === componentId) {
       setSelectedCard("");
     } else {
       setSelectedCard(componentId);
     }
-  };
-
-  const handleSelectCardImageClick = (event: any) => {
-    // if (selectedCard === event.target.parentElement.id) {
-    //   setSelectedCard("");
-    // }
-    // setSelectedCard(event.target.parentElement.id);
   };
 
   React.useEffect(() => {
@@ -57,7 +49,6 @@ const Dialog = (props: DialogProps) => {
   }, [])
 
   const getFigmaComponents = async () => {
-    // const results: any = await fetch('https://api.figma.com/v1/teams/1026835530223828738/components', { // Forma 36 Figma Contentful
     const results: any = await fetch(`https://api.figma.com/v1/teams/${componentsLibraryKey}/components`, { // Figma to Contentful
       // @ts-ignore
       headers: {
@@ -118,7 +109,7 @@ const Dialog = (props: DialogProps) => {
                   // @ts-ignore */}
                 {figmaComponents.find(({ key }) => (key === selectedCard)).name} component is selected
                 </Heading>
-                <Button onClick={handleCloseDialog} isDisabled={selectedCard === ""}>
+                <Button onClick={handleCloseDialog} isDisabled={selectedCard === ""} variant="primary">
                   confirm selection
                 </Button>
               </div>
@@ -129,7 +120,7 @@ const Dialog = (props: DialogProps) => {
               alignItems="flex-start"
               justifyContent="space-between"
               className={css`
-              top: 75px;
+              top: 100px;
               position: relative;
               margin: 20px;
             `}
@@ -152,10 +143,10 @@ const Dialog = (props: DialogProps) => {
                     <img 
                       src={thumbnail_url} 
                       alt={name} 
-                      onClick={handleSelectCardImageClick}
-                    className={css`
-                      max-width: 100%;
-                    `} />
+                      className={css`
+                        max-width: 100%;
+                      `} 
+                    />
                     {/* <Asset
                       src={thumbnail_url}
                       title={name}
