@@ -24,8 +24,8 @@ const Field = (props: FieldProps) => {
   const {
     apiKey,
   } = props.sdk.parameters.installation as AppInstallationParameters;
-  const [value, setValue] = React.useState('');
-  const [component, setComponent] = React.useState(null);
+  const [value, setValue] = useState('');
+  const [component, setComponent] = useState(null);
   React.useEffect(() => {
     const result = props.sdk.field.getValue();
     setValue(result);
@@ -33,7 +33,7 @@ const Field = (props: FieldProps) => {
   
   const handleOpenDialog = async () => {
     const { sdk } = props;
-    const result = await sdk.dialogs.openCurrentApp({
+    await sdk.dialogs.openCurrentApp({
       position: 'center',
       title: 'Choose Figma component',
       shouldCloseOnOverlayClick: true,
@@ -46,18 +46,15 @@ const Field = (props: FieldProps) => {
       allowHeightOverflow: true
     })
     .then(async (result) => {
-      console.log('RESULT -->', result);
       if(result && result.value) {
         await sdk.field.setValue(result.value);
         setValue(result.value);
       }
+    })
+    .catch(error => {
+      console.error('ERROR --->', error);
     });
   };
-
-  // @ts-ignore
-  // const urlQueryPath = location.search;
-  // const parsed = queryString.parse(urlQueryPath);
-  // console.log(parsed);
 
   useEffect(() => {
     (async () => {

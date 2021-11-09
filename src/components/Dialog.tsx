@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Flex,
@@ -19,14 +19,13 @@ const Dialog = (props: DialogProps) => {
     apiKey,
     componentsLibraryKey
   } = props.sdk.parameters.installation as AppInstallationParameters;
-  const [figmaComponents, setFigmaComponents] = React.useState([]);
-  const [figmaErrorMessage, setFigmaErrorMessage] = React.useState('');
+  const [figmaComponents, setFigmaComponents] = useState([]);
+  const [figmaErrorMessage, setFigmaErrorMessage] = useState('');
   // @ts-ignore
-  const selectedFigmaComponentKey = props.sdk.parameters.invocation.figmaComponentKey
-  console.log('PARAMETER --->', apiKey, componentsLibraryKey);
+  const selectedFigmaComponentKey = props.sdk.parameters.invocation.figmaComponentKey;
   
 
-  const [selectedCard, setSelectedCard] = React.useState("");
+  const [selectedCard, setSelectedCard] = useState("");
   const handleSelectCard = (event: any) => {
     const componentId = (event.target.tagName === 'IMG') ? event.target.closest('article').id: event.target.id;
    
@@ -37,7 +36,7 @@ const Dialog = (props: DialogProps) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     // `onConfigure` allows to configure a callback to be
     // invoked when a user attempts to install the app or update
     // its configuration.
@@ -61,7 +60,7 @@ const Dialog = (props: DialogProps) => {
       .catch((error) => {
         console.log('ERROR --->', error);
       });
-    // console.log('results ---->', results.meta.components);
+      
     if (results && results.error && results.message) {
       setFigmaErrorMessage(results.message);
     }

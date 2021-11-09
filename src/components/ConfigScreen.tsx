@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { AppExtensionSDK } from '@contentful/app-sdk';
 import { Workbench } from '@contentful/forma-36-react-components';
 import {
@@ -19,14 +19,11 @@ interface ConfigProps {
   sdk: AppExtensionSDK;
 }
 
-interface ConfigState {
-  parameters: AppInstallationParameters;
-}
 const Config = ({ sdk }: ConfigProps) => {
   const [parameters, setParameters] = React.useState<AppInstallationParameters>(
     { apiKey: '', componentsLibraryKey: '' }
   );
-  const onConfigure = React.useCallback(async () => {
+  const onConfigure = useCallback(async () => {
     // This method will be called when a user clicks on "Install"
     // or "Save" in the configuration screen.
     // for more details see https://www.contentful.com/developers/docs/extensibility/ui-extensions/sdk-reference/#register-an-app-configuration-hook
@@ -44,14 +41,14 @@ const Config = ({ sdk }: ConfigProps) => {
     }
   }, [parameters, sdk])
 
-  React.useEffect(() => {
+  useEffect(() => {
     // `onConfigure` allows to configure a callback to be
     // invoked when a user attempts to install the app or update
     // its configuration.
     sdk?.app.onConfigure(() => onConfigure())
   }, [sdk, onConfigure])
 
-  React.useEffect(() => {
+  useEffect(() => {
     ;(async () => {
       // Get current parameters of the app.
       // If the app is not installed yet, `parameters` will be `null`.
