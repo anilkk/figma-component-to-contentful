@@ -52,7 +52,7 @@ const Dialog = (props: DialogProps) => {
     (async () => {
       const result = await getFigmaComponents();
       console.log('RESULT --->', result);
-      setSelectedCard(selectedFigmaComponentKey);
+      setSelectedCard(selectedFigmaComponentKey || '');
     })();
   }, [])
 
